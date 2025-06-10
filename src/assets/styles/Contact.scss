@@ -1,0 +1,52 @@
+.contact-section {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: transparent;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #5000ca;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Tema claro com base na classe .light-mode
+.light-mode {
+  .contact-section {
+    background-color: #f8f9fa;
+
+    h2,
+    p {
+      color: #0d1116;
+    }
+
+    .contact-button {
+      background-color: #5000ca;
+      color: #ffffff;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+}

@@ -1,0 +1,50 @@
+// assets/styles/Footer.scss
+
+footer {
+  text-align: center;
+  padding: 50px 0;
+
+  // Div que envolve os ícones sociais
+  div {
+    margin-bottom: 1.5rem; // Adiciona um espaço entre os ícones e o texto abaixo
+
+    // Links <a> que envolvem cada ícone
+    a {
+      // Defina um tamanho de fonte para o link.
+      // Este será o tamanho base para todos os ícones.
+      font-size: 1.3rem; // Sinta-se à vontade para ajustar este valor
+      color: #ffffff; // Define uma cor padrão para os ícones
+      margin: 0 10px; // Espaçamento horizontal entre os ícones
+      display: inline-flex; // Melhora o alinhamento vertical
+      align-items: center;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2); // Efeito de hover para os ícones
+      }
+
+      // Estilo para TODOS os ícones SVG (sejam do MUI ou FontAwesome)
+      svg {
+        // Use 'em' para que o SVG se ajuste ao font-size do elemento pai (o <a>).
+        // Isso força todos os ícones a terem exatamente o mesmo tamanho.
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+
+  // Parágrafo de créditos
+  p {
+    font-size: 0.8em;
+    margin: 0;
+
+    a {
+      color: #6c63ff; // Exemplo de cor para o link
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
