@@ -17,7 +17,7 @@ function Contact() {
           </a>
           {/* Lembre-se de colocar o link real para o seu currículo aqui */}
           <a
-            href="https://drive.google.com/file/d/1b8Sk73LAwi49Q-tG76FQX5kArrTkG6RP/view?usp=sharing"
+            href="https://drive.google.com/file/d/151fjgmIlWTef139bAdS_oAhKUpvsgzYf/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="action-button secondary"
