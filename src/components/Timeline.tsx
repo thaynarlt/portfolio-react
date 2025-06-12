@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
@@ -7,11 +7,30 @@ import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
 
 function Timeline() {
+  // Hook para detectar a versão mobile
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+        return window.innerWidth <= 1170; // Usando 1170px como ponto de quebra da timeline
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      // A timeline muda o layout em 1170px, então usamos esse valor
+      setIsMobile(window.innerWidth <= 1170);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   return (
     <div id="history">
       <div className="items-container">
         <h1>Experiência Profissional</h1>
-        <VerticalTimeline>
+        {/* A propriedade 'animate' controla a animação. Será 'false' em dispositivos móveis. */}
+        <VerticalTimeline animate={!isMobile}>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
