@@ -74,6 +74,13 @@
         
         .skills-container .skills-grid .skill {
             padding-bottom: 5%;
+            
+            /* --- OTIMIZAÇÃO PARA CELULAR --- */
+            /* Desativa qualquer animação de rolagem para melhorar a performance */
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important; /* Garante que o elemento fique visível */
         }
     }
 
