@@ -1,10 +1,9 @@
-import React from "react";
-// 1. Importe o ReactPlayer genérico para suportar arquivos .mp4
-import ReactPlayer from "react-player";
+import React, { useState, useEffect } from "react";
+// Usando o player otimizado para YouTube, já que os links são do YouTube
+import ReactPlayer from "react-player/youtube";
 
 // Importe os componentes e os módulos do Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-// Re-importado o módulo de Navigation
 import { Autoplay, Navigation } from "swiper/modules";
 
 // Importe os estilos base do Swiper e o seu arquivo SCSS personalizado
@@ -92,14 +91,30 @@ const videoUrlsRight = [
 
 
 const CarouselContainer: React.FC = () => {
+  // Hook para detectar a versão mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkIsMobile(); // Verifica na primeira renderização
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   return (
-    <section id="carousels"> {/* Adicionado um wrapper para a seção inteira */}
+    <section id="carousels">
       <div className="quad-carousel-container">
         {/* Carrossel 1 (Imagens Esquerda) */}
         <div className="carousel-wrapper image-carousel">
           <Swiper
-            modules={[Autoplay]} spaceBetween={10} slidesPerView={1} loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
+            modules={[Autoplay]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            // CORREÇÃO: Desativa o autoplay se for mobile
+            autoplay={isMobile ? false : { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
             className="my-swiper-instance"
           >
             {leftImages.map((src, index) => (
@@ -147,8 +162,12 @@ const CarouselContainer: React.FC = () => {
         {/* Carrossel 4 (Imagens Direita) - Escondido no celular */}
         <div className="carousel-wrapper image-carousel hide-on-mobile">
           <Swiper
-            modules={[Autoplay]} spaceBetween={10} slidesPerView={1} loop={true}
-            autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true, }}
+            modules={[Autoplay]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            // CORREÇÃO: Desativa o autoplay se for mobile
+            autoplay={isMobile ? false : { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true, }}
             className="my-swiper-instance"
           >
             {rightImages.map((src, index) => (

@@ -35,14 +35,4 @@
     .vertical-timeline-element .vertical-timeline-element-date {
         color: rgb(39, 40, 34);
     }
-
-    /* --- OTIMIZAÇÃO PARA CELULAR --- */
-    /*
-      A classe .vertical-timeline-element--bounce-in é a responsável
-      pela animação de entrada. Aqui, nós a desativamos.
-    */
-    .vertical-timeline-element {
-        animation: none !important;
-        opacity: 1 !important; /* Garante que os elementos fiquem visíveis */
-    }
 }
