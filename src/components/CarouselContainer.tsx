@@ -50,16 +50,42 @@ import fotoDireita16 from "../assets/images/design/32.png";
 import fotoDireita17 from "../assets/images/design/33.png";
 
 const leftImages = [
-  fotoEsquerda1, fotoEsquerda2, fotoEsquerda3, fotoEsquerda4, fotoEsquerda5,
-  fotoEsquerda6, fotoEsquerda7, fotoEsquerda8, fotoEsquerda9, fotoEsquerda10,
-  fotoEsquerda11, fotoEsquerda12, fotoEsquerda13, fotoEsquerda14, fotoEsquerda15, fotoEsquerda16,
+  fotoEsquerda1,
+  fotoEsquerda2,
+  fotoEsquerda3,
+  fotoEsquerda4,
+  fotoEsquerda5,
+  fotoEsquerda6,
+  fotoEsquerda7,
+  fotoEsquerda8,
+  fotoEsquerda9,
+  fotoEsquerda10,
+  fotoEsquerda11,
+  fotoEsquerda12,
+  fotoEsquerda13,
+  fotoEsquerda14,
+  fotoEsquerda15,
+  fotoEsquerda16,
 ];
 
 const rightImages = [
-  fotoDireita1, fotoDireita2, fotoDireita3, fotoDireita4, fotoDireita5,
-  fotoDireita6, fotoDireita7, fotoDireita8, fotoDireita9, fotoDireita10,
-  fotoDireita11, fotoDireita12, fotoDireita13, fotoDireita14, fotoDireita15,
-  fotoDireita16, fotoDireita17,
+  fotoDireita1,
+  fotoDireita2,
+  fotoDireita3,
+  fotoDireita4,
+  fotoDireita5,
+  fotoDireita6,
+  fotoDireita7,
+  fotoDireita8,
+  fotoDireita9,
+  fotoDireita10,
+  fotoDireita11,
+  fotoDireita12,
+  fotoDireita13,
+  fotoDireita14,
+  fotoDireita15,
+  fotoDireita16,
+  fotoDireita17,
 ];
 
 // Listas de vídeos para os dois carrosséis
@@ -90,95 +116,112 @@ const videoUrlsRight = [
   "https://youtube.com/shorts/ciOvjXhQ86A",
 ];
 
-
 const CarouselContainer: React.FC = () => {
   return (
-    // Container renomeado para refletir 4 itens
-    <div className="quad-carousel-container">
-      {/* Carrossel 1 (Imagens Esquerda) */}
-      <div className="carousel-wrapper image-carousel">
-        <Swiper
-          modules={[Autoplay]} spaceBetween={10} slidesPerView={1} loop={true}
-          autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
-          className="my-swiper-instance"
-        >
-          {leftImages.map((src, index) => (
-            <SwiperSlide key={`left-img-${index}`}>
-              <img src={src} alt={`Imagem esquerda ${index + 1}`} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    <div >
+      <h1 className="carousel-title">Carrossel de Imagens e Vídeos</h1>
+      <div className="quad-carousel-container">
+        {/* Carrossel 1 (Imagens Esquerda) */}
+        <div className="carousel-wrapper image-carousel">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            className="my-swiper-instance"
+          >
+            {leftImages.map((src, index) => (
+              <SwiperSlide key={`left-img-${index}`}>
+                <img src={src} alt={`Imagem esquerda ${index + 1}`} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {/* Carrossel 2 (Vídeos Esquerda) */}
-      <div className="carousel-wrapper video-carousel">
-        <Swiper
-          // Módulos de navegação re-adicionados
-          modules={[Navigation]}
-          spaceBetween={10} slidesPerView={1}
-          loop={true} 
-          navigation={true} /* Habilita as setas */
-          className="my-swiper-instance"
-        >
-          {videoUrlsLeft.map((videoUrl, index) => (
-            <SwiperSlide key={`left-video-${index}`}>
-              <ReactPlayer
-                url={videoUrl}
-                className="react-player"
-                width="100%"
-                height="100%"
-                controls={false}  
-                playing={true} 
-                muted={true}   
-                loop={true}
-                // A propriedade 'config' foi removida para permitir o clique nas setas
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        {/* Carrossel 2 (Vídeos Esquerda) */}
+        <div className="carousel-wrapper video-carousel">
+          <Swiper
+            // Módulos de navegação re-adicionados
+            modules={[Navigation]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            navigation={true} /* Habilita as setas */
+            className="my-swiper-instance"
+          >
+            {videoUrlsLeft.map((videoUrl, index) => (
+              <SwiperSlide key={`left-video-${index}`}>
+                <ReactPlayer
+                  url={videoUrl}
+                  className="react-player"
+                  width="100%"
+                  height="100%"
+                  controls={false}
+                  playing={true}
+                  muted={true}
+                  loop={true}
+                  // A propriedade 'config' foi removida para permitir o clique nas setas
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {/* Carrossel 3 (Vídeos Direita) - NOVO */}
-      <div className="carousel-wrapper video-carousel">
-        <Swiper
-          // Módulos de navegação re-adicionados
-          modules={[Navigation]}
-          spaceBetween={10} slidesPerView={1}
-          loop={true}
-          navigation={true} /* Habilita as setas */
-          className="my-swiper-instance"
-        >
-          {videoUrlsRight.map((videoUrl, index) => (
-            <SwiperSlide key={`right-video-${index}`}>
-              <ReactPlayer
-                url={videoUrl}
-                className="react-player"
-                width="100%"
-                height="100%"
-                controls={false}  
-                playing={true} 
-                muted={true}   
-                loop={true}
-                // A propriedade 'config' foi removida para permitir o clique nas setas
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        {/* Carrossel 3 (Vídeos Direita) - NOVO */}
+        <div className="carousel-wrapper video-carousel">
+          <Swiper
+            // Módulos de navegação re-adicionados
+            modules={[Navigation]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            navigation={true} /* Habilita as setas */
+            className="my-swiper-instance"
+          >
+            {videoUrlsRight.map((videoUrl, index) => (
+              <SwiperSlide key={`right-video-${index}`}>
+                <ReactPlayer
+                  url={videoUrl}
+                  className="react-player"
+                  width="100%"
+                  height="100%"
+                  controls={false}
+                  playing={true}
+                  muted={true}
+                  loop={true}
+                  // A propriedade 'config' foi removida para permitir o clique nas setas
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {/* Carrossel 4 (Imagens Direita) */}
-      <div className="carousel-wrapper image-carousel">
-        <Swiper
-          modules={[Autoplay]} spaceBetween={10} slidesPerView={1} loop={true}
-          autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true, }}
-          className="my-swiper-instance"
-        >
-          {rightImages.map((src, index) => (
-            <SwiperSlide key={`right-img-${index}`}>
-              <img src={src} alt={`Imagem direita ${index + 1}`} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {/* Carrossel 4 (Imagens Direita) */}
+        <div className="carousel-wrapper image-carousel">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            className="my-swiper-instance"
+          >
+            {rightImages.map((src, index) => (
+              <SwiperSlide key={`right-img-${index}`}>
+                <img src={src} alt={`Imagem direita ${index + 1}`} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

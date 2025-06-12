@@ -1,51 +1,125 @@
-.contact-section {
+// Variáveis para cores, facilitando a manutenção
+$primary-color: #7b2cbf; // Um roxo vibrante
+$secondary-color: #c77dff;
+$text-color-dark: #e0e0e0;
+$text-color-light: #0d1116;
+$bg-dark: #2c2f33;
+$bg-light: #f8f9fa;
+$border-radius: 12px;
+
+#contact {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; // O fundo virá da seção pai
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 800px;
   text-align: center;
-  padding: 2rem 1rem;
-  background-color: transparent;
+  padding: 3rem;
+  border-radius: $border-radius;
+  
+  // O contorno que você pediu
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  // Efeito de vidro para um toque moderno
+  background: rgba(44, 47, 51, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+  transition: all 0.3s ease;
+}
 
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  // Gradiente sutil no texto
+  background: linear-gradient(90deg, #ffffff, #c7c7c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  .contact-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #5000ca;
+.contact-subtitle {
+  font-size: 1.1rem;
+  color: $text-color-dark;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap; // Garante que os botões se ajustem em telas menores
+}
+
+.action-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  // Botão primário (Email) - AGORA IGUAL AO SECUNDÁRIO
+  &.primary {
+    background-color: transparent;
     color: #ffffff;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    
+    border-color: $secondary-color;
     &:hover {
-      background-color: #5100ca91;
+      background-color: $secondary-color;
+      color: $text-color-light;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba($secondary-color, 0.4);
+    }
+  }
+
+  // Botão secundário (Currículo)
+  &.secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: $secondary-color;
+    &:hover {
+      background-color: $secondary-color;
+      color: $text-color-light;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba($secondary-color, 0.4);
     }
   }
 }
 
-// Tema claro com base na classe .light-mode
+
+// --- TEMA LIGHT MODE ---
 .light-mode {
-  .contact-section {
-    background-color: #f8f9fa;
-
-    h2,
-    p {
-      color: #0d1116;
-    }
-
-    .contact-button {
-      background-color: #5000ca;
-      color: #ffffff;
-
-      &:hover {
-        background-color: #5100ca91;
-      }
-    }
+  .contact-container {
+    border-color: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.7);
   }
 
+  .contact-title {
+    background: linear-gradient(90deg, #222, #555);
+    -webkit-background-clip: text;
+  }
+
+  .contact-subtitle {
+    color: darken($text-color-light, 10%);
+  }
+
+  // Estilos para ambos os botões no modo claro
+  .action-button.primary,
+  .action-button.secondary {
+    color: $text-color-light;
+    border-color: $primary-color;
+    &:hover {
+        background-color: $primary-color;
+        color: #ffffff;
+    }
+  }
 }
