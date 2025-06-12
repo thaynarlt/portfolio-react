@@ -1,0 +1,157 @@
+/* Importando variáveis de design, se houver */
+:root {
+  --carousel-height: 70vh; /* Altura principal para os carrosséis */
+  --carousel-gap: 1.5rem;   /* Espaçamento entre os carrosséis */
+  --navigation-color: #ffffff;
+  --pagination-color: #ffffff;
+  --border-radius: 12px;
+}
+
+/* Container principal para os QUATRO carrosséis */
+.quad-carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: var(--carousel-gap);
+  width: 100%;
+  color: #ffffff; /* Cor de texto padrão (clara) */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Wrapper para cada instância de carrossel */
+.carousel-wrapper {
+  position: relative; /* Necessário para posicionar as setas */
+  flex: 1; 
+  min-width: 0; 
+  max-width: 350px; 
+  height: var(--carousel-height);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Wrapper para os carrosséis de vídeo */
+.video-carousel {
+  flex: 0 0 auto;
+  width: calc(var(--carousel-height) * (9 / 16));
+  max-width: 300px; 
+}
+
+/* Estilização da instância do Swiper */
+.my-swiper-instance {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+}
+
+/* Estilo para os slides individuais */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.react-player {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* --- ESTILO PARA SETAS MINIMALISTAS E DISCRETAS --- */
+.video-carousel .swiper-button-next,
+.video-carousel .swiper-button-prev {
+  color: var(--navigation-color) !important;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 30px !important;   
+  height: 30px !important;  
+  border-radius: 50%;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  opacity: 0; 
+}
+
+.video-carousel:hover .swiper-button-next,
+.video-carousel:hover .swiper-button-prev {
+  opacity: 1;
+}
+
+.video-carousel .swiper-button-next:hover,
+.video-carousel .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.video-carousel .swiper-button-next::after,
+.video-carousel .swiper-button-prev::after {
+  font-size: 0.8rem !important; 
+  font-weight: 800;
+}
+
+
+/* --- TEMA LIGHT MODE --- */
+/* Aplique a classe .light-mode em um elemento pai para ativar */
+.light-mode {
+  .quad-carousel-container {
+    background-color: #f8f9fa;
+    color: #0d1116;
+  }
+}
+
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 1280px) { 
+  .carousel-wrapper {
+     max-width: 280px;
+  }
+  .video-carousel {
+     max-width: 240px;
+  }
+   .quad-carousel-container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --carousel-height: 60vh;
+  }
+  .quad-carousel-container {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+  .carousel-wrapper, .video-carousel {
+    width: 70vw; 
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --carousel-height: 55vh;
+  }
+  .quad-carousel-container {
+    flex-direction: column; 
+    padding: 1rem;
+    gap: 2rem; 
+  }
+
+  .carousel-wrapper, .video-carousel {
+    width: 90vw;
+    max-width: 450px; 
+    height: var(--carousel-height);
+  }
+}
